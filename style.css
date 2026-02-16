@@ -1,10 +1,13 @@
 body {
   font-family: Arial;
   background: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 .wrapper {
-  width: 900px;
+  max-width: 900px;
   margin: 20px auto;
+  padding: 10px;
 }
 
 .form-box,
@@ -12,6 +15,7 @@ body {
   background: #fff;
   padding: 20px;
   margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 h2,
@@ -19,11 +23,12 @@ h3 {
   margin: 0;
 }
 
+/* Company Info */
 .company-info {
   margin-bottom: 10px;
 }
 .company-info h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
 }
 .company-info p {
@@ -31,11 +36,13 @@ h3 {
   line-height: 1.4;
 }
 
+/* Invoice Header */
 .invoice-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* ✅ Wrap for mobile */
 }
 .invoice-header .center h2 {
   text-decoration: underline;
@@ -47,12 +54,15 @@ h3 {
 }
 .invoice-header img {
   height: 50px;
+  max-width: 100%;
 }
 
+/* Table */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
+  table-layout: fixed;
 }
 th,
 td {
@@ -60,23 +70,28 @@ td {
   padding: 6px;
   text-align: center;
   font-size: 12px;
+  word-wrap: break-word;
 }
 
+/* Amount in Words */
 .amount-words {
   font-size: 12px;
   font-weight: bold;
   margin-top: 15px;
 }
 
+/* Signatures */
 .signatures {
   display: flex;
   justify-content: space-between;
   margin-top: 60px;
+  flex-wrap: wrap; /* ✅ Wrap on mobile */
 }
 .sign {
   width: 22%;
   text-align: center;
   font-size: 12px;
+  margin-bottom: 10px;
 }
 .line {
   border-top: 1px solid #000;
@@ -89,15 +104,74 @@ td {
   margin: 0;
 }
 
+/* Form & Inputs */
 .no-print {
   display: block;
-}
-button {
-  padding: 6px 12px;
-  cursor: pointer;
-  margin-top: 10px;
 }
 input {
   width: 100%;
   padding: 6px;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+}
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  .invoice-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .invoice-header .center {
+    text-align: left;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .invoice-header .left,
+  .invoice-header .right {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .signatures {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sign {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  table,
+  th,
+  td {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .company-info h3 {
+    font-size: 14px;
+  }
+  .company-info p {
+    font-size: 11px;
+  }
+  .invoice-header .center h2 {
+    font-size: 14px;
+  }
+  table,
+  th,
+  td {
+    font-size: 10px;
+  }
+  .amount-words {
+    font-size: 11px;
+  }
+  .sign p {
+    font-size: 11px;
+  }
 }
