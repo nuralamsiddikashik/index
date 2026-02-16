@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Conveyance Bill</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- FORM -->
+      <div class="form-box no-print">
+        <h3>Conveyance Entry</h3>
+
+        <!-- Date picker -->
+        <div style="margin-bottom: 10px">
+          <label><strong>Date:</strong></label>
+          <input type="date" id="billDate" onchange="syncInvoice()" />
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Amount (৳)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="formRows">
+            <tr>
+              <td><input type="text" oninput="syncInvoice()" /></td>
+              <td><input type="text" oninput="syncInvoice()" /></td>
+              <td>
+                <input type="text" class="amount" oninput="syncInvoice()" />
+              </td>
+              <td><button onclick="removeRow(this)">✖</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button onclick="addRow()">➕ Add Row</button>
+      </div>
+
+      <!-- INVOICE PREVIEW -->
+      <div id="invoice">
+        <!-- Company Info -->
+        <div class="company-info">
+          <h3>Ashis Auto Solution</h3>
+          <p>
+            Address: Madani Avenue, Beraid, Badda, Dhaka 1212.<br />
+            Phone: 01712287659
+          </p>
+        </div>
+
+        <!-- Invoice Header -->
+        <div class="invoice-header">
+          <div class="left">Date: <span id="invoiceDate"></span></div>
+
+          <div class="center">
+            <h2>CONVEYANCE BILL</h2>
+          </div>
+
+          <div class="right">
+            <img src="logo.png" alt="Company Logo" />
+          </div>
+        </div>
+
+        <!-- Table -->
+        <table>
+          <thead>
+            <tr>
+              <th>From</th>
+              <th>To</th>
+              <th>Amount (৳)</th>
+            </tr>
+          </thead>
+          <tbody id="invoiceRows"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">Total</th>
+              <th>৳ <span id="invoiceTotal">0</span></th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <!-- Amount in Words -->
+        <p class="amount-words">
+          <strong>Amount In Words:</strong>
+          <span id="amountWords"></span>
+        </p>
+
+        <!-- Signatures -->
+        <div class="signatures">
+          <div class="sign">
+            <span class="line"></span>
+            <p>Received By</p>
+          </div>
+          <div class="sign">
+            <span class="line"></span>
+            <p>Director</p>
+          </div>
+          <div class="sign">
+            <span class="line"></span>
+            <p>Managing Director</p>
+          </div>
+          <div class="sign">
+            <span class="line"></span>
+            <p>Accounts</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Download -->
+      <div class="no-print actions">
+        <button onclick="downloadPDF()">⬇ Download PDF</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

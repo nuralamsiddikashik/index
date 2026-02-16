@@ -1,0 +1,103 @@
+body {
+  font-family: Arial;
+  background: #f2f2f2;
+}
+.wrapper {
+  width: 900px;
+  margin: 20px auto;
+}
+
+.form-box,
+#invoice {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h2,
+h3 {
+  margin: 0;
+}
+
+.company-info {
+  margin-bottom: 10px;
+}
+.company-info h3 {
+  font-size: 14px;
+  font-weight: bold;
+}
+.company-info p {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.invoice-header .center h2 {
+  text-decoration: underline;
+  font-size: 16px;
+}
+.invoice-header .left,
+.invoice-header .right {
+  font-size: 12px;
+}
+.invoice-header img {
+  height: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.amount-words {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+.sign {
+  width: 22%;
+  text-align: center;
+  font-size: 12px;
+}
+.line {
+  border-top: 1px solid #000;
+  display: block;
+  margin-bottom: 5px;
+}
+.sign p {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.no-print {
+  display: block;
+}
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+input {
+  width: 100%;
+  padding: 6px;
+}
