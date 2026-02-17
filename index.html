@@ -123,6 +123,20 @@
         position: relative;
       }
 
+      /* FIXED: RESPONSIVE MOBILE GRID */
+      .mobile-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .mobile-grid input {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 8px;
+        font-size: 14px;
+      }
+
       .btn-add-row {
         display: flex;
         align-items: center;
@@ -176,7 +190,6 @@
         align-items: center;
       }
 
-      /* PDF AREA STYLE */
       #pdf-area {
         background: #fff;
         padding: 30px 36px;
@@ -230,7 +243,6 @@
         text-transform: uppercase;
       }
 
-      /* PDF COMPACT STYLE */
       .pdf-compact #pdf-area {
         padding: 5px 15px !important;
       }
@@ -494,11 +506,11 @@
           .map(
             (row, idx) => `
           <div class="mobile-card">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-              <strong>Entry ${idx + 1}</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <strong style="font-size:14px;">Entry ${idx + 1}</strong>
               <button class="btn-remove" onclick="removeRow(${row.id})">✕</button>
             </div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+            <div class="mobile-grid">
               <input placeholder="From" value="${row.from}" oninput="setField(${row.id},'from',this.value)"/>
               <input placeholder="To" value="${row.to}" oninput="setField(${row.id},'to',this.value)"/>
               <input placeholder="Amount" type="number" value="${row.amount}" oninput="setField(${row.id},'amount',this.value)"/>
@@ -547,9 +559,7 @@
         const btn = document.getElementById("dlBtn");
         btn.innerHTML = "Generating...";
         btn.disabled = true;
-
         document.body.classList.add("pdf-compact");
-
         const element = document.getElementById("pdf-area");
         const opt = {
           margin: [2, 10, 5, 10],
@@ -558,7 +568,6 @@
           html2canvas: { scale: 3, useCORS: true, scrollY: 0 },
           jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         };
-
         html2pdf()
           .set(opt)
           .from(element)
